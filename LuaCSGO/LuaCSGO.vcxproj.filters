@@ -26,9 +26,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="test.lua" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="LuaDebugger.h">
       <Filter>Header Files</Filter>
     </ClInclude>

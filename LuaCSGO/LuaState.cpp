@@ -27,21 +27,12 @@ bool LuaState::LoadFile( const char *strFilename ) {
 	return fSuccess;
 }
 
-bool LuaState::CallFunction( int nArgs, int nReturns /* = 0 */ ) {
-	bool fSuccess = false;
-
-	if(lua_isfunction( m_pState, -nArgs - 1 )) {
-		int iErr = 0;
-		iErr = lua_pcall( m_pState, nArgs, nReturns, 0 );
-
-		if(iErr == 0) {
-			fSuccess = true;
-		}
-		else {
-			if(m_pDbg != NULL) m_pDbg->ErrorRun( iErr );
-		}
+bool LuaState::SelectFunction( const char* strFunctionName ) {
+	m_nArgs = 0;
+	lua_settop( m_pState, 0 );
+	lua_getglobal( m_pState, strFunctionName );
+	if(lua_isfunction( m_pState, -m_nArgs - 1 )) {
+		return true;
 	}
-
-	return fSuccess;
+	return false;
 }
-
