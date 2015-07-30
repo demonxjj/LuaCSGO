@@ -134,13 +134,60 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSGO-SDK\CRC.cpp" />
+    <ClCompile Include="CSGO-SDK\SDK.cpp" />
+    <ClCompile Include="CSGO-SDK\Vector.cpp" />
+    <ClCompile Include="CSGO-SDK\Vector2D.cpp" />
+    <ClCompile Include="CSGO-SDK\Vector4D.cpp" />
+    <ClCompile Include="CSGO-SDK\VMatrix.cpp" />
     <ClCompile Include="DllMain.cpp" />
     <ClCompile Include="LuaDebugger.cpp" />
     <ClCompile Include="LuaState.cpp" />
+    <ClCompile Include="Offsets.cpp" />
+    <ClCompile Include="VTableHook.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CSGO-SDK\AudioState.hpp" />
+    <ClInclude Include="CSGO-SDK\CBaseCombatWeapon.hpp" />
+    <ClInclude Include="CSGO-SDK\CBaseEntity.hpp" />
+    <ClInclude Include="CSGO-SDK\CGlobalVarsBase.hpp" />
+    <ClInclude Include="CSGO-SDK\CHandle.hpp" />
+    <ClInclude Include="CSGO-SDK\CInput.hpp" />
+    <ClInclude Include="CSGO-SDK\ClientClass.hpp" />
+    <ClInclude Include="CSGO-SDK\Color.hpp" />
+    <ClInclude Include="CSGO-SDK\CRC.hpp" />
+    <ClInclude Include="CSGO-SDK\CUserCMD.hpp" />
+    <ClInclude Include="CSGO-SDK\Definitions.hpp" />
+    <ClInclude Include="CSGO-SDK\IAppSystem.hpp" />
+    <ClInclude Include="CSGO-SDK\IBaseClientDll.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientEntity.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientEntityList.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientMode.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientNetworkable.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientRenderable.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientThinkable.hpp" />
+    <ClInclude Include="CSGO-SDK\IClientUnknown.hpp" />
+    <ClInclude Include="CSGO-SDK\IEngineTrace.hpp" />
+    <ClInclude Include="CSGO-SDK\IHandleEntity.hpp" />
+    <ClInclude Include="CSGO-SDK\IInput.hpp" />
+    <ClInclude Include="CSGO-SDK\IPanel.hpp" />
+    <ClInclude Include="CSGO-SDK\ISurface.hpp" />
+    <ClInclude Include="CSGO-SDK\IVEngineClient.hpp" />
+    <ClInclude Include="CSGO-SDK\PlayerInfo.hpp" />
+    <ClInclude Include="CSGO-SDK\QAngle.hpp" />
+    <ClInclude Include="CSGO-SDK\Recv.hpp" />
+    <ClInclude Include="CSGO-SDK\SDK.hpp" />
+    <ClInclude Include="CSGO-SDK\String_t.hpp" />
+    <ClInclude Include="CSGO-SDK\Vector.hpp" />
+    <ClInclude Include="CSGO-SDK\Vector2D.hpp" />
+    <ClInclude Include="CSGO-SDK\Vector4D.hpp" />
+    <ClInclude Include="CSGO-SDK\VMatrix.hpp" />
+    <ClInclude Include="DllMain.h" />
     <ClInclude Include="LuaDebugger.h" />
     <ClInclude Include="LuaState.h" />
+    <ClInclude Include="Offsets.hpp" />
+    <ClInclude Include="Utils.hpp" />
+    <ClInclude Include="VTableHook.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

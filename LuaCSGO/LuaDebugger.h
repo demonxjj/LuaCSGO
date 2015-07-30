@@ -13,7 +13,7 @@ class LuaState;
 
 class LuaDebugger {
 public:
-	LuaDebugger( LuaState& vm );
+	LuaDebugger( LuaState* vm );
 	virtual ~LuaDebugger( void );
 
 	void SetHooksFlag( int iMask );
@@ -23,5 +23,5 @@ public:
 
 protected:
 	int m_iCountMask;
-	LuaState& m_vm;
+	LuaState* m_vm;
 };

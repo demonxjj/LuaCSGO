@@ -52,17 +52,17 @@ static void LuaHook( lua_State *lua, lua_Debug *ar ) {
 	}
 }
 
-LuaDebugger::LuaDebugger( LuaState& vm ) : m_iCountMask( 10 ), m_vm( vm ) {
+LuaDebugger::LuaDebugger( LuaState* vm ) : m_iCountMask( 10 ), m_vm( vm ) {
 	// Clear all current hooks
-	if(vm.IsValid()) {
-		vm.AttachDebugger( this );
+	if(vm->IsValid()) {
+		vm->AttachDebugger( this );
 		lua_sethook( (lua_State *)vm, LuaHook, 0, m_iCountMask );
 	}
 }
 
 LuaDebugger::~LuaDebugger( void ) {
 	// Clear all current hooks
-	if(m_vm.IsValid()) {
+	if(m_vm->IsValid()) {
 		lua_sethook( (lua_State *)m_vm, LuaHook, 0, m_iCountMask );
 	}
 }
