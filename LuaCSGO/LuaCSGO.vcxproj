@@ -9,51 +9,30 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F68FD4D3-1B7D-49F5-91D5-A7E77668AFC5}</ProjectGuid>
-    <RootNamespace>LuaCSGO</RootNamespace>
+    <ProjectGuid>{73102152-46C0-4E38-980B-02F7AB8AC47C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LuaBindDemo</RootNamespace>
+    <ProjectName>LuaCSGO</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -61,133 +40,130 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetExt>.dll</TargetExt>
-    <OutDir>$(SolutionDir)\bin\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
+    <IntDir>obj\x86\$(Configuration)\</IntDir>
     <TargetName>LuaCSGO_d</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetExt>.dll</TargetExt>
-    <OutDir>$(SolutionDir)\bin\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
+    <IntDir>obj\x86\$(Configuration)\</IntDir>
     <TargetName>LuaCSGO</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Include\;$(SolutionDir)Dependencies\luabind-0.9.1;$(SolutionDir)Dependencies\boost-1.47.0;$(SolutionDir)Dependencies\lua-5.2.0\src;..\References\lua\include;..\References\luabind\include;..\References\lua\include</AdditionalIncludeDirectories>
+      <StringPooling>true</StringPooling>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)References\$(Configuration)\lua;$(SolutionDir)References\$(Configuration)\luabind</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua_d.lib;luabind_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Include\;$(SolutionDir)Dependencies\luabind-0.9.1;$(SolutionDir)Dependencies\boost-1.47.0;$(SolutionDir)Dependencies\lua-5.2.0\src;..\References\lua\include;..\References\luabind\include;..\References\lua\include</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <StringPooling>true</StringPooling>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)References\$(Configuration)\lua;$(SolutionDir)References\$(Configuration)\luabind</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua.lib;luabind.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LuaLib\LuaLib.vcxproj">
-      <Project>{d3419859-5e21-4a95-936b-8005c1ca3249}</Project>
-    </ProjectReference>
+    <ClCompile Include="Include\CSGO-SDK\CRC.cpp" />
+    <ClCompile Include="Include\CSGO-SDK\SDK.cpp" />
+    <ClCompile Include="Include\CSGO-SDK\Vector.cpp" />
+    <ClCompile Include="Include\CSGO-SDK\Vector2D.cpp" />
+    <ClCompile Include="Include\CSGO-SDK\Vector4D.cpp" />
+    <ClCompile Include="Include\CSGO-SDK\VMatrix.cpp" />
+    <ClCompile Include="Source\DllMain.cpp" />
+    <ClCompile Include="Source\Offsets.cpp" />
+    <ClCompile Include="Source\VTableHook.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CSGO-SDK\CRC.cpp" />
-    <ClCompile Include="CSGO-SDK\SDK.cpp" />
-    <ClCompile Include="CSGO-SDK\Vector.cpp" />
-    <ClCompile Include="CSGO-SDK\Vector2D.cpp" />
-    <ClCompile Include="CSGO-SDK\Vector4D.cpp" />
-    <ClCompile Include="CSGO-SDK\VMatrix.cpp" />
-    <ClCompile Include="DllMain.cpp" />
-    <ClCompile Include="LuaDebugger.cpp" />
-    <ClCompile Include="LuaState.cpp" />
-    <ClCompile Include="Offsets.cpp" />
-    <ClCompile Include="VTableHook.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CSGO-SDK\AudioState.hpp" />
-    <ClInclude Include="CSGO-SDK\CBaseCombatWeapon.hpp" />
-    <ClInclude Include="CSGO-SDK\CBaseEntity.hpp" />
-    <ClInclude Include="CSGO-SDK\CGlobalVarsBase.hpp" />
-    <ClInclude Include="CSGO-SDK\CHandle.hpp" />
-    <ClInclude Include="CSGO-SDK\CInput.hpp" />
-    <ClInclude Include="CSGO-SDK\ClientClass.hpp" />
-    <ClInclude Include="CSGO-SDK\Color.hpp" />
-    <ClInclude Include="CSGO-SDK\CRC.hpp" />
-    <ClInclude Include="CSGO-SDK\CUserCMD.hpp" />
-    <ClInclude Include="CSGO-SDK\Definitions.hpp" />
-    <ClInclude Include="CSGO-SDK\IAppSystem.hpp" />
-    <ClInclude Include="CSGO-SDK\IBaseClientDll.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientEntity.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientEntityList.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientMode.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientNetworkable.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientRenderable.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientThinkable.hpp" />
-    <ClInclude Include="CSGO-SDK\IClientUnknown.hpp" />
-    <ClInclude Include="CSGO-SDK\IEngineTrace.hpp" />
-    <ClInclude Include="CSGO-SDK\IHandleEntity.hpp" />
-    <ClInclude Include="CSGO-SDK\IInput.hpp" />
-    <ClInclude Include="CSGO-SDK\IPanel.hpp" />
-    <ClInclude Include="CSGO-SDK\ISurface.hpp" />
-    <ClInclude Include="CSGO-SDK\IVEngineClient.hpp" />
-    <ClInclude Include="CSGO-SDK\PlayerInfo.hpp" />
-    <ClInclude Include="CSGO-SDK\QAngle.hpp" />
-    <ClInclude Include="CSGO-SDK\Recv.hpp" />
-    <ClInclude Include="CSGO-SDK\SDK.hpp" />
-    <ClInclude Include="CSGO-SDK\String_t.hpp" />
-    <ClInclude Include="CSGO-SDK\Vector.hpp" />
-    <ClInclude Include="CSGO-SDK\Vector2D.hpp" />
-    <ClInclude Include="CSGO-SDK\Vector4D.hpp" />
-    <ClInclude Include="CSGO-SDK\VMatrix.hpp" />
-    <ClInclude Include="DllMain.h" />
-    <ClInclude Include="LuaDebugger.h" />
-    <ClInclude Include="LuaState.h" />
-    <ClInclude Include="Offsets.hpp" />
-    <ClInclude Include="Utils.hpp" />
-    <ClInclude Include="VTableHook.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\AudioState.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CBaseCombatWeapon.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CBaseEntity.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CGlobalVarsBase.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CHandle.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CInput.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\ClientClass.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\Color.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CRC.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\CUserCMD.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\Definitions.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IAppSystem.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IBaseClientDll.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientEntity.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientEntityList.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientMode.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientNetworkable.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientRenderable.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientThinkable.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IClientUnknown.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IEngineTrace.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IHandleEntity.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IPanel.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\ISurface.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\IVEngineClient.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\PlayerInfo.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\QAngle.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\Recv.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\SDK.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\String_t.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\Vector.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\Vector2D.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\Vector4D.hpp" />
+    <ClInclude Include="Include\CSGO-SDK\VMatrix.hpp" />
+    <ClInclude Include="Include\DllMain.h" />
+    <ClInclude Include="Include\LuaExports\BaseClientEntity.hpp" />
+    <ClInclude Include="Include\LuaExports\Callbacks.hpp" />
+    <ClInclude Include="Include\LuaExports\EngineTraceInterface.hpp" />
+    <ClInclude Include="Include\LuaExports\Events.hpp" />
+    <ClInclude Include="Include\LuaExports\GameTrace.hpp" />
+    <ClInclude Include="Include\LuaExports\Interfaces.hpp" />
+    <ClInclude Include="Include\LuaExports\DrawManager.hpp" />
+    <ClInclude Include="Include\LuaExports\EngineInterface.hpp" />
+    <ClInclude Include="Include\LuaExports\EntityListInterface.hpp" />
+    <ClInclude Include="Include\LuaExports\Exports.hpp" />
+    <ClInclude Include="Include\LuaExports\GlobalVars.hpp" />
+    <ClInclude Include="Include\LuaExports\KeyboardEvent.hpp" />
+    <ClInclude Include="Include\LuaExports\Keys.hpp" />
+    <ClInclude Include="Include\LuaExports\MouseEvent.hpp" />
+    <ClInclude Include="Include\LuaExports\PanelInterface.hpp" />
+    <ClInclude Include="Include\LuaExports\UserCMD.hpp" />
+    <ClInclude Include="Include\LuaExports\VerifiedCMD.hpp" />
+    <ClInclude Include="Include\Offsets.hpp" />
+    <ClInclude Include="Include\LuaExports\Utils.hpp" />
+    <ClInclude Include="Include\VTableHook.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
