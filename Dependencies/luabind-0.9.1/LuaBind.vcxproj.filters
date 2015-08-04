@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\class.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\class_info.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\class_registry.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\class_rep.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\create_class.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\error.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\exception_handler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\function.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inheritance.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\link_compatibility.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object_rep.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\open.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcall.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scope.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stack_content_by_name.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\weak_ref.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wrapper_base.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

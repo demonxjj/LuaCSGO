@@ -1,0 +1,100 @@
+LuaCSGO: A Lua API for CSGO game hacking
+
+The main script must be placed at "steamapps\common\Counter-Strike Global Offensive\LuaCSGO\LuaCSGO.lua". Additional scripts can be used but they must be included (require("LuaCSGO/CustomScriptName")) by the main script.
+
+Checkout the example script at <link>
+
+TODO:
+	- Add error messages when something bad happens. As of right now if you call "class.function" instead of "class:function" the program just crashes.
+	- Allow for custom callbacks. The user would register his own callbacks for predefined events. Example:
+		
+		function MyCallback(mouseEvent)
+			--Do something nice
+			return false
+		end
+		
+		REGISTER(MouseEvent, MyCallback)
+	
+
+Currently exported members:
+
+Class: Size
+Constructor:
+	Size()
+	Size(int width, int height)
+Properties:
+	int Width
+	int Height
+	
+Class: Vector
+Constructor:
+	Vector()
+	Vector(float x, float y, float z)
+Properties:
+	float X
+	float Y
+	float Z
+
+Class: Module
+Functions:
+	DWORD 				BaseAddress()
+	DWORD 				EntryPointAddress()
+	DWORD 				Size()
+	
+Class: BaseClientEntity
+Functions:
+	Vector				GetOrigin()
+	
+Class: EngineInterface
+Functions:
+	void 				Con_NPrintf( int pos, const char* szString )
+	void 				ExecuteCommand( const char* szCommand )
+	const char* 		GetClientName(int entNum)
+	int 				GetLocalPlayer()
+	const char*			GetLevelName()
+	int 				GetMaxClients()
+	Size 				GetScreenSize()
+	Vector 				GetViewAngles()
+	bool 				IsConnected()
+	bool 				IsInGame()
+	bool 				IsPlayingDemo()
+	bool 				IsRecordingDemo()
+	bool 				IsTakingScreenshot()
+	void 				SetViewAngles( Vector v )
+	
+Class: EntityListInterface
+Functions:
+	BaseClientEntity 	GetEntityFromIndex( int index )
+	int 				GetHighestEntityIndex()
+	
+Class: GlobalVars
+Functions:
+	
+Class: PanelInterface
+Functions: 
+	const char* 		GetName( unsigned int panel )
+	
+Namespace: CSGO
+Functions:
+	EngineInterface 	GetEngineInterface()
+	EntityListInterface GetEntityListInterface()
+	PanelInterface 		GetPanelInterface()
+	GlobalVars 			GetGlobalVars()
+	void 				SetPaintTraverseHook( bool enable )
+	
+Namespace: DrawManager
+Functions:
+	DWORD				CreateNewFont(const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow )
+	void 				DrawLine(int x1, int y1, int x2, int y2)
+	void 				DrawFilledCircle(int x, int y, int r)
+	void 				DrawFilledRect(int x, int y, int w, int h)
+	void 				DrawOutlinedCircle(int x, int y, int r)
+	void 				DrawOutlinedRect(int x, int y, int w, int h)
+	void				DrawText(DWORD fontId, int x, int y, const char* text)
+	void 				FillGradient( int x, int y, int w, int h, DWORD to, bool vertical )
+	DWORD 				GetDrawColor()
+	void 				SetDrawColor(DWORD argb)
+	
+Namespace: WinAPI
+Functions:
+	Module 				GetModule( const char* szModuleName )
