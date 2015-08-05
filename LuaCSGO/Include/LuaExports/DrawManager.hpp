@@ -1,6 +1,6 @@
 #pragma once
 #include "CSGO-SDK/SDK.hpp"
-
+#include <d3d9.h>
 #include <locale>
 #include <codecvt>
 #include <string>
@@ -9,6 +9,9 @@ namespace LuaCSGO
 {
 	class DrawManager {
 	public:
+		static unsigned long ColorFromARGB( int a, int r, int g, int b ) {
+			return D3DCOLOR_ARGB( a, r, g, b );
+		}
 		unsigned long CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow ) {
 			unsigned long font = SDK::Interfaces::g_pVGuiSurface->CreateFont();
 			int flags = ( italic ? SDK::FontFlags::FONTFLAG_ITALIC : 0 ) | ( outlined ? SDK::FontFlags::FONTFLAG_OUTLINE : 0 ) | ( dropShadow ? SDK::FontFlags::FONTFLAG_DROPSHADOW : 0 );

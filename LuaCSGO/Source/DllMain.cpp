@@ -415,7 +415,8 @@ void InitializeLua() {
 			.def( "GetChecksum", &UserCMD::GetChecksum ),
 		luabind::class_<VerifiedCMD>( "VerifiedCMD" )
 			.def( "Update", &VerifiedCMD::Update ),
-		luabind::def( "RELOAD", &Reload )
+		luabind::def( "RELOAD", &Reload ),
+		luabind::def( "COLOR", &DrawManager::ColorFromARGB )
 	];
 
 	//Export the keys on its own file so as to not spam this file with over 150 lines
