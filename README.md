@@ -1,21 +1,17 @@
 ## LuaCSGO: 
-	- A Lua API for CSGO hacking
+* A Lua API for CSGO hacking
 	
-
-**This is a prof of concept. I dont advise anyone to use public released hacks such as these.**
-
+####This is a prof of concept. I dont advise anyone to use public released hacks such as these.
 
 HOWTO:
-
-	* The main script must be placed at "steamapps\common\Counter-Strike Global Offensive\LuaCSGO\LuaCSGO.lua". 
-	* Additional scripts can be used but they must be included (require("LuaCSGO/CustomScriptName") by the main script.
+* The main script must be placed at "steamapps\common\Counter-Strike Global Offensive\LuaCSGO\LuaCSGO.lua". 
+* Additional scripts can be used but they must be included (require("LuaCSGO/CustomScriptName") by the main script.
 
 Checkout the example script at https://github.com/MarkHC/LuaCSGO/tree/master/Example
 
 
 TODO:
-
-	* Add error messages when something bad happens. As of right now if you call "class.function" instead of "function" the program just crashes without letting you know why.
+* Add error messages when something bad happens. As of right now if you call "class.function" instead of "function" the program just crashes without letting you know why.
 	
 	
 Currently exported stuff in no particular order:
