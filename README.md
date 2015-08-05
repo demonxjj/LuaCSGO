@@ -17,7 +17,8 @@ Currently exported stuff in no particular order:
 ##CLASSES
 
 Class:
-	Interfaces
+	**Interfaces**
+	
 Functions:
 ```
 	EngineInterface 		GetEngineInterface()
@@ -28,7 +29,8 @@ Functions:
 ```
 
 Class:
-	DrawManager
+	**DrawManager**
+	
 Functions:
 ```
 	unsigned long 			CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow )
@@ -47,7 +49,8 @@ Functions:
 ```
 
 Class:
-	Callbacks
+	**Callbacks**
+	
 Functions:
 ```
 	bool 					RegisterCallback( CallbackType type, luabind::object f )
@@ -56,7 +59,8 @@ Functions:
 ```
 
 Class:
-	Utils
+	**Utils**
+	
 Functions:
 ```
 	Vector 					GetEntityBone( BaseClientEntity pEntity, int iBoneNumber )
@@ -65,7 +69,8 @@ Functions:
 ```
 
 Class:
-	Keys
+	**Keys**
+	
 Functions:
 ```
 	const char* 			LookupKeyString( int keycode )
@@ -73,23 +78,29 @@ Functions:
 
 Class:
 	**Size**
+	
 Functions:
 ```
 	bool 					IsValid()
 ```
 Properties:
+```
 	int Width
 	int Height
+```
 Operators:
+```
 	Size + Size
 	Size - Size
 	Size * Size
 	Size / Size
 	Size * float
 	Size / float
-	
+```
+
 Class:
 	**Vector**
+	
 Functions:
 ```
 	bool 					IsValid()
@@ -101,19 +112,24 @@ Functions:
 	void 					Zero()
 ```
 Properties:
+```
 	float X
 	float Y
 	float Z
+```
 Operators:
+```
 	Vector + Vector
 	Vector - Vector
 	Vector * Vector
 	Vector / Vector
 	Vector * float
 	Vector / float
-	
+```
+
 Class:
 	**BaseClientEntity**
+	
 Functions:
 ```
 	bool 					IsValid()
@@ -134,6 +150,7 @@ Functions:
 
 Class:
 	**EngineInterface**
+	
 Functions:
 ```
 	bool 					IsInGame()
@@ -153,6 +170,7 @@ Functions:
 
 Class:
 	**GameTrace**
+	
 Functions:
 ```
 	bool 					DidHit()
@@ -164,6 +182,7 @@ Functions:
 
 Class:
 	**EngineTraceInterface**
+	
 Functions:
 ```
 	GameTrace 				TraceRay( Vector start, Vector end, BaseClientEntity skipEnt, unsigned int mask)
@@ -171,6 +190,7 @@ Functions:
 
 Class:
 	**EntityListInterface**
+	
 Functions:
 ```
 	BaseClientEntity 		GetEntityFromIndex( int index )
@@ -179,6 +199,7 @@ Functions:
 
 Class:
 	**GlobalVars**
+	
 Functions:
 ```
 	float 					GetAbsFrameTime()
@@ -195,6 +216,7 @@ Functions:
 
 Class:
 	**PanelInterface**
+	
 Functions:
 ```
 	const char* 			GetName( unsigned int panel )
@@ -202,33 +224,43 @@ Functions:
 
 Class:
 	**MouseEvent**
+	
 Properties:
+```
 	X
 	Y
 	Type
 	Button
-	
+```
+
 Class:
 	**KeyboardEvent**
+	
 Properties:
+```
 	Type
 	KeyCode
+```
 
 Class:
 	**UserCMD**
+	
 Functions:
 ```
 	void 					GetChecksum()
 ```
 Properties:
+```
 	Buttons
 	ViewAngles
 	ForwardMove
 	SideMove
 	UpMove
-	
+```
+
 Class:	
 	**VerifiedCMD**
+	
 Functions:
 ```
 	void 					Update(UserCMD userCmd)
