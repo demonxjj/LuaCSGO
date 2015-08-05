@@ -291,7 +291,7 @@ void InitializeLua() {
 			.def( "GetEntityListInterface", &Interfaces::GetEntityListInterface )
 			.def( "GetPanelInterface", &Interfaces::GetPanelInterface )
 			.def( "GetGlobalVars", &Interfaces::GetGlobalVars ),
-			luabind::class_<DrawManager>( "__DrawManager" )
+		luabind::class_<DrawManager>( "__DrawManager" )
 			.def( "CreateNewFont", &DrawManager::CreateNewFont )
 			.def( "DrawLine", &DrawManager::DrawLine )
 			.def( "DrawFilledCircle", &DrawManager::DrawFilledCircle )
@@ -305,17 +305,17 @@ void InitializeLua() {
 			.def( "GetDrawColor", &DrawManager::GetDrawColor )
 			.def( "SetDrawColor", &DrawManager::SetDrawColor )
 			.def( "MeasureText", &DrawManager::MeasureText ),
-			luabind::class_<Callbacks>( "__Callbacks" )
+		luabind::class_<Callbacks>( "__Callbacks" )
 			.def( "Register", &Callbacks::RegisterCallback )
 			.def( "DisableAllExcept", &Callbacks::DisableAllExcept )
 			.def( "EnableAllCallbacks", &Callbacks::EnableAllCallbacks ),
-			luabind::class_<Utils>( "__Utils" )
+		luabind::class_<Utils>( "__Utils" )
 			.def( "GetEntityBone", &Utils::GetEntityBone )
 			.def( "WorldToScreen", &Utils::WorldToScreen )
 			.def( "GetLocalPlayer", &Utils::GetLocalPlayer ),
-			luabind::class_<Keys>( "__Keys" )
+		luabind::class_<Keys>( "__Keys" )
 			.def( "LookupKeyString", &Keys::LookupKeyString ),
-			luabind::class_<SDK::Vector2D>( "Size" )
+		luabind::class_<SDK::Vector2D>( "Size" )
 			.def( luabind::constructor<>() )
 			.def( luabind::constructor<float, float>() )
 			.def( luabind::const_self + luabind::const_self )
@@ -327,7 +327,7 @@ void InitializeLua() {
 			.def( "IsValid", &SDK::Vector2D::IsValid )
 			.property( "Width", &SDK::Vector2D::x, &SDK::Vector2D::x )
 			.property( "Height", &SDK::Vector2D::y, &SDK::Vector2D::y ),
-			luabind::class_<SDK::Vector>( "Vector" )
+		luabind::class_<SDK::Vector>( "Vector" )
 			.def( luabind::constructor<>() )
 			.def( luabind::constructor<float, float, float>() )
 			.def( luabind::const_self + luabind::const_self )
@@ -346,7 +346,7 @@ void InitializeLua() {
 			.def( "Length", &SDK::Vector::Length )
 			.def( "Normalized", &SDK::Vector::Normalized )
 			.def( "Zero", &SDK::Vector::Zero ),
-			luabind::class_<BaseClientEntity>( "BaseClientEntity" )
+		luabind::class_<BaseClientEntity>( "BaseClientEntity" )
 			.def( "IsValid", &BaseClientEntity::IsValid )
 			.def( "GetOrigin", &BaseClientEntity::GetOrigin )
 			.def( "GetClassID", &BaseClientEntity::GetClassID )
@@ -361,7 +361,7 @@ void InitializeLua() {
 			.def( "GetViewPunch", &BaseClientEntity::GetViewPunch )
 			.def( "SetAimPunch", &BaseClientEntity::SetAimPunch )
 			.def( "SetViewPunch", &BaseClientEntity::SetViewPunch ),
-			luabind::class_<EngineInterface>( "EngineInterface" )
+		luabind::class_<EngineInterface>( "EngineInterface" )
 			.def( "ExecuteCommand", &EngineInterface::ExecuteCommand )
 			.def( "GetClientName", &EngineInterface::GetClientName )
 			.def( "GetLevelName", &EngineInterface::GetLevelName )
@@ -375,18 +375,18 @@ void InitializeLua() {
 			.def( "IsRecordingDemo", &EngineInterface::IsRecordingDemo )
 			.def( "IsTakingScreenshot", &EngineInterface::IsTakingScreenshot )
 			.def( "SetViewAngles", &EngineInterface::SetViewAngles ),
-			luabind::class_<GameTrace>( "GameTrace" )
+		luabind::class_<GameTrace>( "GameTrace" )
 			.def( "DidHit", &GameTrace::DidHit )
 			.def( "DidHitEntity", &GameTrace::DidHitEntity )
 			.def( "GetHitbox", &GameTrace::GetHitbox )
 			.def( "IsVisible", &GameTrace::IsVisible )
 			.def( "GetEndPos", &GameTrace::GetEndPos ),
-			luabind::class_<EngineTraceInterface>( "EngineTraceInterface" )
+		luabind::class_<EngineTraceInterface>( "EngineTraceInterface" )
 			.def( "TraceRay", &EngineTraceInterface::TraceRay ),
-			luabind::class_<EntityListInterface>( "EntityListInterface" )
+		luabind::class_<EntityListInterface>( "EntityListInterface" )
 			.def( "GetEntityFromIndex", &EntityListInterface::GetEntityFromIndex )
 			.def( "GetHighestEntityIndex", &EntityListInterface::GetHighestEntityIndex ),
-			luabind::class_<GlobalVars>( "GlobalVars" )
+		luabind::class_<GlobalVars>( "GlobalVars" )
 			.def( "GetAbsoluteFrameTime", &GlobalVars::GetAbsFrameTime )
 			.def( "GetFrameCount", &GlobalVars::GetFrameCount )
 			.def( "GetFrameTime", &GlobalVars::GetFrameTime )
@@ -396,14 +396,14 @@ void InitializeLua() {
 			.def( "GetRealTime", &GlobalVars::GetRealTime )
 			.def( "GetTickCount", &GlobalVars::GetTickCount )
 			.def( "IsRemoteClient", &GlobalVars::IsRemoteClient ),
-			luabind::class_<PanelInterface>( "PanelInterface" )
+		luabind::class_<PanelInterface>( "PanelInterface" )
 			.def( "GetName", &PanelInterface::GetName ),
-			luabind::class_<MouseEvent>( "MouseEvent" )
+		luabind::class_<MouseEvent>( "MouseEvent" )
 			.property( "X", &MouseEvent::GetX )
 			.property( "Y", &MouseEvent::GetY )
 			.property( "Type", &MouseEvent::GetType )
 			.property( "Button", &MouseEvent::GetButton ),
-			luabind::class_<KeyboardEvent>( "KeyboardEvent" )
+		luabind::class_<KeyboardEvent>( "KeyboardEvent" )
 			.property( "Type", &KeyboardEvent::GetType )
 			.property( "KeyCode", &KeyboardEvent::GetKeyCode ),
 			luabind::class_<UserCMD>( "UserCMD" )
@@ -413,9 +413,9 @@ void InitializeLua() {
 			.property( "SideMove", &UserCMD::GetSideMove, &UserCMD::SetSideMove )
 			.property( "UpMove", &UserCMD::GetUpMove, &UserCMD::SetUpMove )
 			.def( "GetChecksum", &UserCMD::GetChecksum ),
-			luabind::class_<VerifiedCMD>( "VerifiedCMD" )
+		luabind::class_<VerifiedCMD>( "VerifiedCMD" )
 			.def( "Update", &VerifiedCMD::Update ),
-			luabind::def( "RELOAD", &Reload )
+		luabind::def( "RELOAD", &Reload )
 	];
 
 	//Export the keys on its own file so as to not spam this file with over 150 lines
@@ -452,6 +452,16 @@ void InitializeLua() {
 	luabind::globals( g_pLuaState )["MASK_VISIBLE"] = MASK_VISIBLE;
 	luabind::globals( g_pLuaState )["MASK_SHOT_PORTAL"] = MASK_SHOT_PORTAL;
 	luabind::globals( g_pLuaState )["MASK_SHOT_BRUSHONLY"] = MASK_SHOT_BRUSHONLY;
+
+	luabind::globals( g_pLuaState )["FL_ONGROUND"] = SDK::EntityFlags::FL_ONGROUND;
+	luabind::globals( g_pLuaState )["FL_DUCKING"] = SDK::EntityFlags::FL_DUCKING;
+	luabind::globals( g_pLuaState )["FL_WATERJUMP"] = SDK::EntityFlags::FL_WATERJUMP;
+	luabind::globals( g_pLuaState )["FL_ONTRAIN"] = SDK::EntityFlags::FL_ONTRAIN;
+	luabind::globals( g_pLuaState )["FL_INRAIN"] = SDK::EntityFlags::FL_INRAIN;
+	luabind::globals( g_pLuaState )["FL_FROZEN"] = SDK::EntityFlags::FL_FROZEN;
+	luabind::globals( g_pLuaState )["FL_ATCONTROLS"] = SDK::EntityFlags::FL_ATCONTROLS;
+	luabind::globals( g_pLuaState )["FL_CLIENT"] = SDK::EntityFlags::FL_CLIENT;
+	luabind::globals( g_pLuaState )["FL_FAKECLIENT"] = SDK::EntityFlags::FL_FAKECLIENT;
 
 	luabind::globals( g_pLuaState )["Interfaces"] = &g_Interfaces;
 	luabind::globals( g_pLuaState )["DrawManager"] = &g_DrawManager;

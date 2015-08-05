@@ -52,24 +52,15 @@ namespace SDK {
 	};
 
 	enum EntityFlags {
-		//At rest / on the ground
-		FL_ONGROUND = (1 << 0),	
-		//Player is fully crouched
-		FL_DUCKING = (1 << 1),	
-		//Player jumping out of water
-		FL_WATERJUMP = (1 << 2),	
-		//Player is _controlling_ a train, so movement commands should be ignored on client during prediction.
-		FL_ONTRAIN = (1 << 3),
-		//Indicates the entity is standing in rain
-		FL_INRAIN = (1 << 4),
-		//Player is frozen for 3rd person camera
-		FL_FROZEN = (1 << 5),
-		//Player can't move, but keeps key inputs for controlling another entity
-		FL_ATCONTROLS = (1 << 6),
-		//Is a player
-		FL_CLIENT = (1 << 7),
-		//Fake client, simulated server side; don't send network messages to them
-		FL_FAKECLIENT = (1 << 8)
+		FL_ONGROUND		= (1 << 0),	
+		FL_DUCKING		= (1 << 1),	
+		FL_WATERJUMP	= (1 << 2),
+		FL_ONTRAIN		= (1 << 3),
+		FL_INRAIN		= (1 << 4),
+		FL_FROZEN		= (1 << 5),
+		FL_ATCONTROLS	= (1 << 6),
+		FL_CLIENT		= (1 << 7),
+		FL_FAKECLIENT	= (1 << 8)
 	};
 
 	enum LifeState {
