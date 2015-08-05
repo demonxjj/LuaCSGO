@@ -18,7 +18,7 @@ Currently exported stuff in no particular order:
 
 
 **Interfaces**
-```
+```C++
 	EngineInterface 		GetEngineInterface()
 	EngineTraceInterface 	GetEngineTraceInterface()
 	EntityListInterface 	GetEntityListInterface()
@@ -27,7 +27,7 @@ Currently exported stuff in no particular order:
 ```
 
 **DrawManager**
-```
+```C++
 	unsigned long 			CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow )
 	void 					DrawLine( int x1, int y1, int x2, int y2 )
 	void 					DrawFilledCircle( int x, int y, int r )
@@ -44,30 +44,26 @@ Currently exported stuff in no particular order:
 ```
 
 **Callbacks**
-```
+```C++
 	bool 					RegisterCallback( CallbackType type, luabind::object f )
 	void 					DisableAllExcept( CallbackType type )
 	void 					EnableAllCallbacks()
 ```
 
 **Utils**
-	
-Functions:
-```
+```C++
 	Vector 					GetEntityBone( BaseClientEntity pEntity, int iBoneNumber )
 	Vector 					WorldToScreen( const Vector &origin )
 	BaseClientEntity 		GetLocalPlayer()
 ```
 
 **Keys**
-	
-Functions:
-```
+```C++
 	const char* 			LookupKeyString( int keycode )
 ```
 
 **Size** 
-```
+```C++
 	bool 					IsValid()
  
 	int Width
@@ -83,7 +79,7 @@ Operators:
 ```
 
 **Vector** 
-```
+```C++
 	bool 					IsValid()
 	float 					Dot()
 	bool					IsZero()
@@ -106,7 +102,7 @@ Operators:
 ```
 
 **BaseClientEntity** 
-```
+```C++
 	bool 					IsValid()
 	Vector 					GetOrigin()
 	int 					GetClassID()
@@ -124,7 +120,7 @@ Operators:
 ```
 
 **EngineInterface** 
-```
+```C++
 	bool 					IsInGame()
 	bool 					IsConnected()
 	bool 					IsPlayingDemo()
@@ -141,7 +137,7 @@ Operators:
 ```
 
 **GameTrace** 
-```
+```C++
 	bool 					DidHit()
 	bool 					IsVisible()
 	bool 					DidHitEntity( BaseClientEntity pEnt )
@@ -150,18 +146,18 @@ Operators:
 ```
 
 **EngineTraceInterface** 
-```
+```C++
 	GameTrace 				TraceRay( Vector start, Vector end, BaseClientEntity skipEnt, unsigned int mask)
 ```
 
 **EntityListInterface** 
-```
+```C++
 	BaseClientEntity 		GetEntityFromIndex( int index )
 	int 					GetHighestEntityIndex()
 ```
 
 **GlobalVars** 
-```
+```C++
 	float 					GetAbsFrameTime()
 	float 					GetCurrentTime()
     int 					GetFrameCount()
@@ -175,7 +171,7 @@ Operators:
 ```
 
 **PanelInterface**
-```
+```C++
 	const char* 			GetName( unsigned int panel )
 ```
 
@@ -195,7 +191,7 @@ Operators:
 
 
 **UserCMD**
-```
+```C++
 	void 					GetChecksum() 
 	
 	Buttons
@@ -206,6 +202,166 @@ Operators:
 ```
 
 **VerifiedCMD**
-```
+```C++
 	void 					Update(UserCMD userCmd)
+```
+
+#CONSTANTS
+
+**Callbacks**
+```
+CALLBACK_SCRIPTLOAD
+CALLBACK_SCRIPTUNLOAD
+CALLBACK_MOUSE
+CALLBACK_KEYBOARD
+CALLBACK_PAINTTRAVERSE
+CALLBACK_CREATEMOVE
+CALLBACK_FRAMESTAGENOTIFY_BEGIN
+CALLBACK_FRAMESTAGENOTIFY_END
+```
+
+**FrameStageNotify stages**
+```
+FRAME_UNDEFINED
+FRAME_START
+FRAME_NET_UPDATE_START
+FRAME_NET_UPDATE_POSTDATAUPDATE_START
+FRAME_NET_UPDATE_POSTDATAUPDATE_END
+FRAME_NET_UPDATE_END
+FRAME_RENDER_START
+FRAME_RENDER_END
+```
+
+**Events**
+```
+EVENT_UNKNOWN
+EVENT_KEYDOWN
+EVENT_KEYUP
+EVENT_MOUSEDOWN
+EVENT_MOUSEUP
+EVENT_MOUSEMOVE
+```
+
+**Masks for TraceRay**
+```
+MASK_ALL
+MASK_SOLID
+MASK_SHOT
+MASK_VISIBLE
+MASK_SHOT_PORTAL
+MASK_SHOT_BRUSHONLY
+```
+
+**Keys**
+```
+KEY_NONE		
+BUTTON_LEFT		
+BUTTON_RIGHT	
+BUTTON_MIDDLE	
+BUTTON_MOUSE4	
+BUTTON_MOUSE5	
+KEY_BACK		
+KEY_TAB			
+KEY_CLEAR		
+KEY_RETURN		
+KEY_SHIFT		
+KEY_CONTROL		
+KEY_ALT			
+KEY_PAUSE		
+KEY_CAPITAL		
+KEY_ESCAPE		
+KEY_SPACE		
+KEY_PRIOR		
+KEY_NEXT		
+KEY_END			
+KEY_HOME		
+KEY_LEFT		
+KEY_UP			
+KEY_RIGHT		
+KEY_DOWN		
+KEY_PRINT		
+KEY_INSERT		
+KEY_DELETE		
+KEY_0			
+KEY_1			
+KEY_2			
+KEY_3			
+KEY_4			
+KEY_5			
+KEY_6			
+KEY_7			
+KEY_8			
+KEY_9			
+KEY_A			
+KEY_B			
+KEY_C			
+KEY_D			
+KEY_E			
+KEY_F			
+KEY_G			
+KEY_H			
+KEY_I			
+KEY_J			
+KEY_K			
+KEY_L			
+KEY_M			
+KEY_N			
+KEY_O			
+KEY_P			
+KEY_Q			
+KEY_R			
+KEY_S			
+KEY_T			
+KEY_U			
+KEY_V			
+KEY_W			
+KEY_X			
+KEY_Y			
+KEY_Z			
+KEY_LWIN		
+KEY_RWIN		
+KEY_APPS		
+KEY_SLEEP		
+KEY_NUMPAD0		
+KEY_NUMPAD1		
+KEY_NUMPAD2		
+KEY_NUMPAD3		
+KEY_NUMPAD4		
+KEY_NUMPAD5		
+KEY_NUMPAD6		
+KEY_NUMPAD7		
+KEY_NUMPAD8		
+KEY_NUMPAD9		
+KEY_MULTIPLY	
+KEY_ADD			
+KEY_SEPARATOR	
+KEY_SUBTRACT	
+KEY_DECIMAL		
+KEY_DIVIDE		
+KEY_F1			
+KEY_F2			
+KEY_F3			
+KEY_F4			
+KEY_F5			
+KEY_F6			
+KEY_F7			
+KEY_F8			
+KEY_F9			
+KEY_F10			
+KEY_F11			
+KEY_F12			
+KEY_LMENU		
+KEY_RMENU		
+KEY_OEM_1		
+KEY_OEM_PLUS	
+KEY_OEM_COMMA	
+KEY_OEM_MINUS	
+KEY_OEM_PERIOD	
+KEY_OEM_2		
+KEY_OEM_3		
+KEY_OEM_4		
+KEY_OEM_5		
+KEY_OEM_6		
+KEY_OEM_7		
+KEY_OEM_8
 ```
