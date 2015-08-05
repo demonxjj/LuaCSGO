@@ -10,16 +10,14 @@ HOWTO:
 Checkout the example script at https://github.com/MarkHC/LuaCSGO/tree/master/Example
 
 TODO:
-	- Add error messages when something bad happens. As of right now if you call "class.function" instead of "class:function" the program just crashes without letting you know why.
+	- Add error messages when something bad happens. As of right now if you call "class.function" instead of "function" the program just crashes without letting you know why.
 	
 Currently exported stuff in no particular order:
 
 ##CLASSES
 
-Class:
-	**Interfaces**
-	
-Functions:
+
+**Interfaces**
 ```
 	EngineInterface 		GetEngineInterface()
 	EngineTraceInterface 	GetEngineTraceInterface()
@@ -28,10 +26,7 @@ Functions:
 	GlobalVars 				GetGlobalVars()
 ```
 
-Class:
-	**DrawManager**
-	
-Functions:
+**DrawManager**
 ```
 	unsigned long 			CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow )
 	void 					DrawLine( int x1, int y1, int x2, int y2 )
@@ -48,18 +43,14 @@ Functions:
 	void 					SetDrawColor( unsigned long argb )
 ```
 
-Class:
-	**Callbacks**
-	
-Functions:
+**Callbacks**
 ```
 	bool 					RegisterCallback( CallbackType type, luabind::object f )
 	void 					DisableAllExcept( CallbackType type )
 	void 					EnableAllCallbacks()
 ```
 
-Class:
-	**Utils**
+**Utils**
 	
 Functions:
 ```
@@ -68,28 +59,21 @@ Functions:
 	BaseClientEntity 		GetLocalPlayer()
 ```
 
-Class:
-	**Keys**
+**Keys**
 	
 Functions:
 ```
 	const char* 			LookupKeyString( int keycode )
 ```
 
-Class:
-	**Size**
-	
-Functions:
+**Size** 
 ```
 	bool 					IsValid()
-```
-Properties:
-```
+ 
 	int Width
-	int Height
-```
-Operators:
-```
+	int Height 
+	
+Operators: 
 	Size + Size
 	Size - Size
 	Size * Size
@@ -98,10 +82,7 @@ Operators:
 	Size / float
 ```
 
-Class:
-	**Vector**
-	
-Functions:
+**Vector** 
 ```
 	bool 					IsValid()
 	float 					Dot()
@@ -109,16 +90,13 @@ Functions:
 	void 					Invalidate()
 	float 					Length()
 	Vector 					Normalized()
-	void 					Zero()
-```
-Properties:
-```
+	void 					Zero() 
+	
 	float X
 	float Y
 	float Z
-```
+	
 Operators:
-```
 	Vector + Vector
 	Vector - Vector
 	Vector * Vector
@@ -127,10 +105,7 @@ Operators:
 	Vector / float
 ```
 
-Class:
-	**BaseClientEntity**
-	
-Functions:
+**BaseClientEntity** 
 ```
 	bool 					IsValid()
 	Vector 					GetOrigin()
@@ -148,10 +123,7 @@ Functions:
 	void 					SetViewPunch( Vector v )
 ```
 
-Class:
-	**EngineInterface**
-	
-Functions:
+**EngineInterface** 
 ```
 	bool 					IsInGame()
 	bool 					IsConnected()
@@ -168,10 +140,7 @@ Functions:
 	void 					SetViewAngles( Vector v )
 ```
 
-Class:
-	**GameTrace**
-	
-Functions:
+**GameTrace** 
 ```
 	bool 					DidHit()
 	bool 					IsVisible()
@@ -180,27 +149,18 @@ Functions:
 	Vector 					GetEndPos()
 ```
 
-Class:
-	**EngineTraceInterface**
-	
-Functions:
+**EngineTraceInterface** 
 ```
 	GameTrace 				TraceRay( Vector start, Vector end, BaseClientEntity skipEnt, unsigned int mask)
 ```
 
-Class:
-	**EntityListInterface**
-	
-Functions:
+**EntityListInterface** 
 ```
 	BaseClientEntity 		GetEntityFromIndex( int index )
 	int 					GetHighestEntityIndex()
 ```
 
-Class:
-	**GlobalVars**
-	
-Functions:
+**GlobalVars** 
 ```
 	float 					GetAbsFrameTime()
 	float 					GetCurrentTime()
@@ -214,18 +174,12 @@ Functions:
     float 					GetTickCount()
 ```
 
-Class:
-	**PanelInterface**
-	
-Functions:
+**PanelInterface**
 ```
 	const char* 			GetName( unsigned int panel )
 ```
 
-Class:
-	**MouseEvent**
-	
-Properties:
+**MouseEvent**
 ```
 	X
 	Y
@@ -233,24 +187,17 @@ Properties:
 	Button
 ```
 
-Class:
-	**KeyboardEvent**
-	
-Properties:
+**KeyboardEvent**
 ```
 	Type
 	KeyCode
 ```
 
-Class:
-	**UserCMD**
+
+**UserCMD**
+```
+	void 					GetChecksum() 
 	
-Functions:
-```
-	void 					GetChecksum()
-```
-Properties:
-```
 	Buttons
 	ViewAngles
 	ForwardMove
@@ -258,11 +205,7 @@ Properties:
 	UpMove
 ```
 
-Class:	
-	**VerifiedCMD**
-	
-Functions:
+**VerifiedCMD**
 ```
 	void 					Update(UserCMD userCmd)
 ```
-ReloadScripts()
