@@ -11,7 +11,7 @@ Checkout the example script at https://github.com/MarkHC/LuaCSGO/tree/master/Exa
 
 
 TODO:
-* Add error messages when something bad happens. As of right now if you call "class.function" instead of "function" the program just crashes without letting you know why.
+* Add error messages when something bad happens. As of right now if you call "class.function" instead of "class:function" the program just crashes without letting you know why.
 	
 	
 Currently exported stuff in no particular order:
