@@ -30,11 +30,11 @@ namespace SDK {
 	class CBaseCombatWeapon {
 	public:
 		const int GetWeaponID() const {
-			return *reinterpret_cast<int*>((DWORD)this + (DWORD)0x00001690);
+			return *reinterpret_cast<int*>((unsigned long)this + (unsigned long)0x00001690);
 		}
 
 		const int NextPrimaryAttack() const {
-			return *reinterpret_cast<int*>((DWORD)this + (DWORD)0x0000159C);
+			return *reinterpret_cast<int*>((unsigned long)this + (unsigned long)0x0000159C);
 		}
 
 		const char* GetName() {

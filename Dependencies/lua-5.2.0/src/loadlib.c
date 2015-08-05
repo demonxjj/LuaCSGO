@@ -168,8 +168,8 @@ static lua_CFunction ll_sym (lua_State *L, void *lib, const char *sym) {
 static void setprogdir (lua_State *L) {
   char buff[MAX_PATH + 1];
   char *lb;
-  DWORD nsize = sizeof(buff)/sizeof(char);
-  DWORD n = GetModuleFileNameA(NULL, buff, nsize);
+  unsigned long nsize = sizeof(buff)/sizeof(char);
+  unsigned long n = GetModuleFileNameA(NULL, buff, nsize);
   if (n == 0 || n == nsize || (lb = strrchr(buff, '\\')) == NULL)
     luaL_error(L, "unable to get ModuleFileName");
   else {

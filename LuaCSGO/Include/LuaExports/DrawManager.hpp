@@ -9,8 +9,8 @@ namespace LuaCSGO
 {
 	class DrawManager {
 	public:
-		DWORD CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow ) {
-			DWORD font = SDK::Interfaces::g_pVGuiSurface->CreateFont();
+		unsigned long CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow ) {
+			unsigned long font = SDK::Interfaces::g_pVGuiSurface->CreateFont();
 			int flags = ( italic ? SDK::FontFlags::FONTFLAG_ITALIC : 0 ) | ( outlined ? SDK::FontFlags::FONTFLAG_OUTLINE : 0 ) | ( dropShadow ? SDK::FontFlags::FONTFLAG_DROPSHADOW : 0 );
 			SDK::Interfaces::g_pVGuiSurface->SetFontGlyphSet( font, fontFace, size, bold ? FW_BOLD : 0, 0, 0, flags );
 			return font;
@@ -43,7 +43,7 @@ namespace LuaCSGO
 			SDK::Interfaces::g_pVGuiSurface->DrawFilledRect( x, y, x + w, y + h );
 		}
 
-		void FillGradient( int x, int y, int w, int h, DWORD to, bool vertical ) {
+		void FillGradient( int x, int y, int w, int h, unsigned long to, bool vertical ) {
 			SDK::Color color1 = m_CurrentColor;
 			SDK::Color color2 = SDK::Color::FromARGB( to );
 
@@ -101,7 +101,7 @@ namespace LuaCSGO
 			SDK::Interfaces::g_pVGuiSurface->DrawOutlinedRect( x, y, x + w, y + h );
 		}
 
-		void DrawText( DWORD fontId, int x, int y, const char* text ) {
+		void DrawText( unsigned long fontId, int x, int y, const char* text ) {
 			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			std::wstring wtext = converter.from_bytes( text );
 
@@ -111,7 +111,7 @@ namespace LuaCSGO
 			SDK::Interfaces::g_pVGuiSurface->DrawPrintText( wtext.c_str(), wtext.size() );
 		}
 
-		SDK::Vector2D MeasureText( DWORD fontId, const char* text ) {
+		SDK::Vector2D MeasureText( unsigned long fontId, const char* text ) {
 			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			std::wstring wtext = converter.from_bytes( text );
 			int w, h;
@@ -119,11 +119,11 @@ namespace LuaCSGO
 			return SDK::Vector2D(w, h);
 		}
 
-		DWORD GetDrawColor() {
+		unsigned long GetDrawColor() {
 			return m_CurrentColor.GetARGB();
 		}
 
-		void SetDrawColor( DWORD argb ) {
+		void SetDrawColor( unsigned long argb ) {
 			m_CurrentColor.SetARGB( argb );
 			SDK::Interfaces::g_pVGuiSurface->DrawSetColor( m_CurrentColor );
 			SDK::Interfaces::g_pVGuiSurface->DrawSetTextColor( m_CurrentColor );

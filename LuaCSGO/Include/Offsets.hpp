@@ -10,11 +10,11 @@
 #endif
 
 namespace Offsets {
-	extern DWORD			g_ClientBase;
-	extern DWORD			g_EngineBase;
-	extern DWORD			g_MatSurface;
-	extern DWORD			g_VGUI2;
-	extern DWORD			g_dwGlobalVarsBase;
+	extern unsigned long			g_ClientBase;
+	extern unsigned long			g_EngineBase;
+	extern unsigned long			g_MatSurface;
+	extern unsigned long			g_VGUI2;
+	extern unsigned long			g_dwGlobalVarsBase;
 
 	void Dump();
 	void GetOffsets();

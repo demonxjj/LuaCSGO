@@ -33,6 +33,11 @@ namespace LuaCSGO
 			return screen;
 		}
 
+		BaseClientEntity GetLocalPlayer() {
+			return BaseClientEntity( (SDK::CBaseEntity*)SDK::Interfaces::g_pEntityList->GetClientEntity( SDK::Interfaces::g_pEngine->GetLocalPlayer() ) );
+		}
+
+
 		bool ScreenTransform( const SDK::Vector& point, SDK::Vector& screen ) {
 			const SDK::VMatrix& w2sMatrix = SDK::Interfaces::g_pEngine->WorldToScreenMatrix();
 			screen.x = w2sMatrix.m[0][0] * point.x + w2sMatrix.m[0][1] * point.y + w2sMatrix.m[0][2] * point.z + w2sMatrix.m[0][3];

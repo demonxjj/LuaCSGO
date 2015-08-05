@@ -13,31 +13,31 @@ namespace Offsets {
 		return ( *szMask ) == NULL;
 	}
 
-	DWORD FindPattern( DWORD dwAddress, DWORD dwLen, BYTE *bMask, const char* szMask ) {
-		for(DWORD i = 0; i < dwLen; i++)
+	unsigned long FindPattern( unsigned long dwAddress, unsigned long dwLen, BYTE *bMask, const char* szMask ) {
+		for(unsigned long i = 0; i < dwLen; i++)
 			if(Mask( (BYTE*)( dwAddress + i ), bMask, szMask ))
-				return (DWORD)( dwAddress + i );
+				return (unsigned long)( dwAddress + i );
 		return 0;
 	}
 
-	DWORD SigScan( std::string module, BYTE *bSig, const char* szMask ) {
+	unsigned long SigScan( std::string module, BYTE *bSig, const char* szMask ) {
 		_MODULEINFO modInfo;
 		GetModuleInformation( GetCurrentProcess(), GetModuleHandleA( module.c_str() ), &modInfo, sizeof( _MODULEINFO ) );
-		return FindPattern( (DWORD)modInfo.lpBaseOfDll, modInfo.SizeOfImage, bSig, szMask );
+		return FindPattern( (unsigned long)modInfo.lpBaseOfDll, modInfo.SizeOfImage, bSig, szMask );
 	}
 
-	DWORD			g_ClientBase;
-	DWORD			g_EngineBase;
-	DWORD			g_MatSurface;
-	DWORD			g_VGUI2;
-	DWORD			g_dwGlobalVarsBase = NULL;
+	unsigned long			g_ClientBase;
+	unsigned long			g_EngineBase;
+	unsigned long			g_MatSurface;
+	unsigned long			g_VGUI2;
+	unsigned long			g_dwGlobalVarsBase = NULL;
 
 	void GetOffsets() {
 		do {
-			g_ClientBase	= (DWORD)GetModuleHandleA( "client.dll" );
-			g_EngineBase	= (DWORD)GetModuleHandleA( "engine.dll" );
-			g_MatSurface	= (DWORD)GetModuleHandleA( "vguimatsurface.dll" );
-			g_VGUI2			= (DWORD)GetModuleHandleA( "vgui2.dll" );
+			g_ClientBase	= (unsigned long)GetModuleHandleA( "client.dll" );
+			g_EngineBase	= (unsigned long)GetModuleHandleA( "engine.dll" );
+			g_MatSurface	= (unsigned long)GetModuleHandleA( "vguimatsurface.dll" );
+			g_VGUI2			= (unsigned long)GetModuleHandleA( "vgui2.dll" );
 			Sleep( 200 );
 		} while( !g_ClientBase || !g_EngineBase || !g_MatSurface || !g_VGUI2 );
 

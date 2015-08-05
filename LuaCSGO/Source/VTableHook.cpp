@@ -1,25 +1,25 @@
 #include "VTableHook.hpp"
 
-VTableHook::VTableHook( DWORD** ppClass ) {
+VTableHook::VTableHook( unsigned long** ppClass ) {
 	_ClassBase = ppClass;
 	_OldVTable = *ppClass;
 	_VTableLength = GetVTableLength( *_ClassBase );
 
-	_NewVTable = new DWORD[_VTableLength];
-	memcpy( _NewVTable, _OldVTable, sizeof( DWORD ) * _VTableLength );
+	_NewVTable = new unsigned long[_VTableLength];
+	memcpy( _NewVTable, _OldVTable, sizeof( unsigned long ) * _VTableLength );
 
-	VirtualProtect( ppClass, sizeof( DWORD ), PAGE_EXECUTE_READWRITE, &_OldProtect );
+	VirtualProtect( ppClass, sizeof( unsigned long ), PAGE_EXECUTE_READWRITE, &_OldProtect );
 	*ppClass = _NewVTable;
-	VirtualProtect( ppClass, sizeof( DWORD ), _OldProtect, &_OldProtect );
+	VirtualProtect( ppClass, sizeof( unsigned long ), _OldProtect, &_OldProtect );
 }
 
 VTableHook::~VTableHook() {
 	delete[] _NewVTable;
 }
 
-DWORD VTableHook::GetVTableLength( LPDWORD ppVTable ) {
+unsigned long VTableHook::GetVTableLength( LPDWORD ppVTable ) {
 	__try {
-		DWORD dwIndex = 0;
+		unsigned long dwIndex = 0;
 
 		for(dwIndex = 0; ppVTable[dwIndex]; dwIndex++) {
 			//This sometimes throws access violations for no reason on Windows 10
@@ -35,23 +35,23 @@ DWORD VTableHook::GetVTableLength( LPDWORD ppVTable ) {
 	}
 }
 
-DWORD VTableHook::GetVTableLength() {
+unsigned long VTableHook::GetVTableLength() {
 	return _VTableLength;
 }
 
-DWORD VTableHook::HookIndex( DWORD index, DWORD newFunc ) {
+unsigned long VTableHook::HookIndex( unsigned long index, unsigned long newFunc ) {
 	if(index > _VTableLength)
 		return NULL;
 	_NewVTable[index] = newFunc;
 	return _OldVTable[index];
 }
 
-void VTableHook::UnhookIndex( DWORD index ) {
+void VTableHook::UnhookIndex( unsigned long index ) {
 	if(index > _VTableLength) return;
 	_NewVTable[index] = _OldVTable[index];
 }
 
-DWORD VTableHook::GetOriginalVFunc( DWORD index ) {
+unsigned long VTableHook::GetOriginalVFunc( unsigned long index ) {
 	if(index > _VTableLength)
 		return NULL;
 
@@ -64,8 +64,8 @@ PDWORD VTableHook::GetOriginalVTable() {
 
 void VTableHook::RestoreVTable() {
 	if(_ClassBase) {
-		VirtualProtect( _ClassBase, sizeof( DWORD ), PAGE_EXECUTE_READWRITE, &_OldProtect );
+		VirtualProtect( _ClassBase, sizeof( unsigned long ), PAGE_EXECUTE_READWRITE, &_OldProtect );
 		*_ClassBase = _OldVTable;
-		VirtualProtect( _ClassBase, sizeof( DWORD ), _OldProtect, &_OldProtect );
+		VirtualProtect( _ClassBase, sizeof( unsigned long ), _OldProtect, &_OldProtect );
 	}
 }

@@ -7,18 +7,18 @@ public:
 
 	~VTableHook();
 
-	DWORD HookIndex( DWORD index, DWORD newFunc );
-	void UnhookIndex( DWORD index );
-	DWORD GetVTableLength();
-	DWORD GetOriginalVFunc( DWORD index );
+	unsigned long HookIndex( unsigned long index, unsigned long newFunc );
+	void UnhookIndex( unsigned long index );
+	unsigned long GetVTableLength();
+	unsigned long GetOriginalVFunc( unsigned long index );
 	PDWORD GetOriginalVTable();
 	void RestoreVTable();
 
 private:
-	DWORD GetVTableLength( LPDWORD ppVTable );
+	unsigned long GetVTableLength( LPDWORD ppVTable );
 
 private:
 	PDWORD*	_ClassBase;
 	PDWORD	_OldVTable, _NewVTable;
-	DWORD	_VTableLength, _OldProtect;
+	unsigned long	_VTableLength, _OldProtect;
 };
