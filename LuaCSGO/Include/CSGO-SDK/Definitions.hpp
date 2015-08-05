@@ -16,9 +16,9 @@ namespace SDK {
 	// Call a virtual function
 	//-----------------------------------------------------------------------------
 	template<typename FuncType>
-	FuncType CallVFunction( void* ppClass, unsigned long index ) {
+	FuncType CallVFunction( void* ppClass, DWORD index ) {
 		PDWORD pVTable = *(PDWORD*)ppClass;
-		unsigned long dwAddress = pVTable[index];
+		DWORD dwAddress = pVTable[index];
 		return (FuncType)(dwAddress);
 	}
 

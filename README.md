@@ -1,7 +1,9 @@
 ## LuaCSGO: 
 * A Lua API for CSGO hacking
 	
-####This is a prof of concept. I dont advise anyone to use public released hacks such as these.
+####This is a Proof of concept. I dont advise anyone to use public released hacks such as these.
+
+![l33t image](http://i.imgur.com/lOgmOFI.jpg)
 
 HOWTO:
 * The main script must be placed at "steamapps\common\Counter-Strike Global Offensive\LuaCSGO\LuaCSGO.lua". 

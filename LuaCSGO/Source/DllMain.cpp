@@ -114,7 +114,7 @@ bool InitializeInterfaces() {
 	//		A simple nullptr check wouldnt work because this will most likely return something that is not null, even when it fails.
 	//	- Find a dynamic way of getting GlobalVars that doesnt involve sig scanning.
 	//		Sig: A1 ? ? ? ? F3 0F 58 40 10
-	SDK::Interfaces::g_pInput = *reinterpret_cast< SDK::CInput** >( ( *(unsigned long**)SDK::Interfaces::g_pClient )[15] + 0x1 );
+	SDK::Interfaces::g_pInput = *reinterpret_cast< SDK::CInput** >( ( *(DWORD**)SDK::Interfaces::g_pClient )[15] + 0x1 );
 	SDK::Interfaces::g_pGlobals = *( SDK::CGlobalVarsBase** )( Offsets::g_dwGlobalVarsBase );
 
 	return true;
@@ -124,9 +124,9 @@ void SetupHooks() {
 	g_pPanelHook = std::make_unique<VTableHook>( (PDWORD*)SDK::Interfaces::g_pVGuiPanel );
 	g_pClientHook = std::make_unique<VTableHook>( (PDWORD*)SDK::Interfaces::g_pClient );
 
-	g_pOriginalCreateMove = (CreateMove_t)g_pClientHook->HookIndex( 21, (unsigned long)HookedCreateMove );
-	g_pOriginalFrameStageNotify = (FrameStageNotify_t)g_pClientHook->HookIndex( 36, (unsigned long)HookedFrameStageNotify );
-	g_pOriginalPaintTraverse = (PaintTraverse_t)g_pPanelHook->HookIndex( 41, (unsigned long)HookedPaintTraverse );
+	g_pOriginalCreateMove = (CreateMove_t)g_pClientHook->HookIndex( 21, (DWORD)HookedCreateMove );
+	g_pOriginalFrameStageNotify = (FrameStageNotify_t)g_pClientHook->HookIndex( 36, (DWORD)HookedFrameStageNotify );
+	g_pOriginalPaintTraverse = (PaintTraverse_t)g_pPanelHook->HookIndex( 41, (DWORD)HookedPaintTraverse );
 }
 
 void LoadScripts() {
@@ -415,7 +415,7 @@ void InitializeLua() {
 			.def( "GetChecksum", &UserCMD::GetChecksum ),
 			luabind::class_<VerifiedCMD>( "VerifiedCMD" )
 			.def( "Update", &VerifiedCMD::Update ),
-			luabind::def( "ReloadScripts", &Reload )
+			luabind::def( "RELOAD", &Reload )
 	];
 
 	//Export the keys on its own file so as to not spam this file with over 150 lines
@@ -471,7 +471,7 @@ void InitializeLua() {
 	}
 }
 
-unsigned long WINAPI InitThread( LPVOID ) {
+DWORD WINAPI InitThread( LPVOID ) {
 	AllocDeveloperConsole();
 
 	if(InitializeInterfaces())
@@ -489,7 +489,7 @@ unsigned long WINAPI InitThread( LPVOID ) {
 	return TRUE;
 }
 
-BOOL WINAPI DllMain( HMODULE hMod, unsigned long dwReason, LPVOID lpReserved ) {
+BOOL WINAPI DllMain( HMODULE hMod, DWORD dwReason, LPVOID lpReserved ) {
 	switch(dwReason) {
 		case DLL_PROCESS_ATTACH:
 			DisableThreadLibraryCalls( hMod );

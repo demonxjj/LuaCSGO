@@ -36,12 +36,9 @@ namespace LuaCSGO
 		}
 		
 		void DisableAllExcept( CallbackType type ) {
-			printf( "DisableAllExcept, %d\n", type );
 			for(auto it = _callbacks.begin(); it != _callbacks.end(); it++) {
-				if(it->first != type) {
-					printf( "it->first != type, %d\n", it->first );
+				if(it->first != type)
 					std::get<0>( it->second ) = false;
-				}
 			}
 		}
 

@@ -17,7 +17,7 @@ function LuaCSGO:Enable()
 end
 
 function LuaCSGO:Toggle()
-	if self.IsActive() then self.Disable() else self.Enable() end
+	self.bActive = not self.bActive
 end
 
 function LuaCSGO:IsActive()
