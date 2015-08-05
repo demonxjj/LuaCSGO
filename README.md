@@ -5,7 +5,7 @@
 
 HOWTO:
 	- The main script must be placed at "steamapps\common\Counter-Strike Global Offensive\LuaCSGO\LuaCSGO.lua". 
-	- Additional scripts can be used but they must be included (require("LuaCSGO/CustomScriptName")) by the main script.
+	- Additional scripts can be used but they must be included (require("LuaCSGO/CustomScriptName");); by the main script.
 
 Checkout the example script at https://github.com/MarkHC/LuaCSGO/tree/master/Example
 
@@ -19,52 +19,52 @@ Currently exported stuff in no particular order:
 
 **Interfaces**
 ```C++
-	EngineInterface 		GetEngineInterface()
-	EngineTraceInterface 	GetEngineTraceInterface()
-	EntityListInterface 	GetEntityListInterface()
-	PanelInterface 			GetPanelInterface()
-	GlobalVars 				GetGlobalVars()
+	EngineInterface 		GetEngineInterface();
+	EngineTraceInterface 	GetEngineTraceInterface();
+	EntityListInterface 	GetEntityListInterface();
+	PanelInterface 			GetPanelInterface();
+	GlobalVars 				GetGlobalVars();
 ```
 
 **DrawManager**
 ```C++
-	unsigned long 			CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow )
-	void 					DrawLine( int x1, int y1, int x2, int y2 )
-	void 					DrawFilledCircle( int x, int y, int r )
-	void 					DrawFilledRect( int x, int y, int w, int h )
-	void 					FillGradient( int x, int y, int w, int h, unsigned long to, bool vertical )
-	void 					DrawOutlinedCircle( int x, int y, int r, unsigned long outlineColor )
-	void 					DrawCircle( int x, int y, int r )
-	void 					DrawOutlinedRect( int x, int y, int w, int h, unsigned long outlineColor )
-	void 					DrawRect( int x, int y, int w, int h )
-	void 					DrawText( unsigned long fontId, int x, int y, const char* text )
-	Size 					MeasureText( unsigned long fontId, const char* text )
-	unsigned long 			GetDrawColor()
-	void 					SetDrawColor( unsigned long argb )
+	unsigned long 			CreateNewFont( const char* fontFace, int size, bool bold, bool italic, bool outlined, bool dropShadow );
+	void 					DrawLine( int x1, int y1, int x2, int y2 );
+	void 					DrawFilledCircle( int x, int y, int r );
+	void 					DrawFilledRect( int x, int y, int w, int h );
+	void 					FillGradient( int x, int y, int w, int h, unsigned long to, bool vertical );
+	void 					DrawOutlinedCircle( int x, int y, int r, unsigned long outlineColor );
+	void 					DrawCircle( int x, int y, int r );
+	void 					DrawOutlinedRect( int x, int y, int w, int h, unsigned long outlineColor );
+	void 					DrawRect( int x, int y, int w, int h );;
+	void 					DrawText( unsigned long fontId, int x, int y, const char* text );
+	Size 					MeasureText( unsigned long fontId, const char* text );
+	unsigned long 			GetDrawColor();
+	void 					SetDrawColor( unsigned long argb );
 ```
 
 **Callbacks**
 ```C++
-	bool 					RegisterCallback( CallbackType type, luabind::object f )
-	void 					DisableAllExcept( CallbackType type )
-	void 					EnableAllCallbacks()
+	bool 					RegisterCallback( CallbackType type, luabind::object f );
+	void 					DisableAllExcept( CallbackType type );
+	void 					EnableAllCallbacks();
 ```
 
 **Utils**
 ```C++
-	Vector 					GetEntityBone( BaseClientEntity pEntity, int iBoneNumber )
-	Vector 					WorldToScreen( const Vector &origin )
-	BaseClientEntity 		GetLocalPlayer()
+	Vector 					GetEntityBone( BaseClientEntity pEntity, int iBoneNumber );
+	Vector 					WorldToScreen( const Vector &origin );
+	BaseClientEntity 		GetLocalPlayer();
 ```
 
 **Keys**
 ```C++
-	const char* 			LookupKeyString( int keycode )
+	const char* 			LookupKeyString( int keycode );
 ```
 
 **Size** 
 ```C++
-	bool 					IsValid()
+	bool 					IsValid();
  
 	int Width
 	int Height 
@@ -80,13 +80,13 @@ Operators:
 
 **Vector** 
 ```C++
-	bool 					IsValid()
-	float 					Dot()
-	bool					IsZero()
-	void 					Invalidate()
-	float 					Length()
-	Vector 					Normalized()
-	void 					Zero() 
+	bool 					IsValid();
+	float 					Dot();
+	bool					IsZero();
+	void 					Invalidate();
+	float 					Length();
+	Vector 					Normalized();
+	void 					Zero(); 
 	
 	float X
 	float Y
@@ -103,76 +103,76 @@ Operators:
 
 **BaseClientEntity** 
 ```C++
-	bool 					IsValid()
-	Vector 					GetOrigin()
-	int 					GetClassID()
-	const char* 			GetClassName()
-	int 					GetHealth()
-	int 					GetFlags()
-	Vector 					GetEyePos()
-	bool 					IsDormant()
-	bool 					IsAlive()
-	int 					GetTeam()
-	Vector 					GetAimPunch()
-	Vector 					GetViewPunch()
-	void 					SetAimPunch( Vector v )
-	void 					SetViewPunch( Vector v )
+	bool 					IsValid();
+	Vector 					GetOrigin();
+	int 					GetClassID();
+	const char* 			GetClassName();
+	int 					GetHealth();
+	int 					GetFlags();
+	Vector 					GetEyePos();
+	bool 					IsDormant();
+	bool 					IsAlive();
+	int 					GetTeam();
+	Vector 					GetAimPunch();
+	Vector 					GetViewPunch();
+	void 					SetAimPunch( Vector v );
+	void 					SetViewPunch( Vector v );
 ```
 
 **EngineInterface** 
 ```C++
-	bool 					IsInGame()
-	bool 					IsConnected()
-	bool 					IsPlayingDemo()
-	bool 					IsRecordingDemo()
-	bool 					IsTakingScreenshot()
-	void 					ExecuteCommand( const char* szCommand )
-	int 					GetLocalPlayer()
-	int 					GetMaxClients()
-	const char* 			GetClientName( int entNum )
-	const char* 			GetLevelName()
-	Size 					GetScreenSize()
-	Vector 					GetViewAngles()
-	void 					SetViewAngles( Vector v )
+	bool 					IsInGame();
+	bool 					IsConnected();
+	bool 					IsPlayingDemo();
+	bool 					IsRecordingDemo();
+	bool 					IsTakingScreenshot();
+	void 					ExecuteCommand( const char* szCommand );
+	int 					GetLocalPlayer();
+	int 					GetMaxClients();
+	const char* 			GetClientName( int entNum );
+	const char* 			GetLevelName();
+	Size 					GetScreenSize();
+	Vector 					GetViewAngles();
+	void 					SetViewAngles( Vector v );
 ```
 
 **GameTrace** 
 ```C++
-	bool 					DidHit()
-	bool 					IsVisible()
-	bool 					DidHitEntity( BaseClientEntity pEnt )
-	int 					GetHitbox()
-	Vector 					GetEndPos()
+	bool 					DidHit();
+	bool 					IsVisible();
+	bool 					DidHitEntity( BaseClientEntity pEnt );
+	int 					GetHitbox();
+	Vector 					GetEndPos();
 ```
 
 **EngineTraceInterface** 
 ```C++
-	GameTrace 				TraceRay( Vector start, Vector end, BaseClientEntity skipEnt, unsigned int mask)
+	GameTrace 				TraceRay( Vector start, Vector end, BaseClientEntity skipEnt, unsigned int mask);
 ```
 
 **EntityListInterface** 
 ```C++
-	BaseClientEntity 		GetEntityFromIndex( int index )
-	int 					GetHighestEntityIndex()
+	BaseClientEntity 		GetEntityFromIndex( int index );
+	int 					GetHighestEntityIndex();
 ```
 
 **GlobalVars** 
 ```C++
-	float 					GetAbsFrameTime()
-	float 					GetCurrentTime()
-    int 					GetFrameCount()
-    float 					GetFrameTime()
-    float 					GetInterpolationAmount()
+	float 					GetAbsFrameTime();
+	float 					GetCurrentTime();
+    int 					GetFrameCount();
+    float 					GetFrameTime();
+    float 					GetInterpolationAmount();
     float 					GetIntervalPerTick
-    int 					GetMaxClients()
-    bool 					IsRemoteClient()
-    float 					GetRealTime()
-    float 					GetTickCount()
+    int 					GetMaxClients();
+    bool 					IsRemoteClient();
+    float 					GetRealTime();
+    float 					GetTickCount();
 ```
 
 **PanelInterface**
 ```C++
-	const char* 			GetName( unsigned int panel )
+	const char* 			GetName( unsigned int panel );
 ```
 
 **MouseEvent**
@@ -192,7 +192,7 @@ Operators:
 
 **UserCMD**
 ```C++
-	void 					GetChecksum() 
+	void 					GetChecksum(); 
 	
 	Buttons
 	ViewAngles
@@ -203,7 +203,7 @@ Operators:
 
 **VerifiedCMD**
 ```C++
-	void 					Update(UserCMD userCmd)
+	void 					Update(UserCMD userCmd);
 ```
 
 #CONSTANTS
