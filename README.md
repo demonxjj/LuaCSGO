@@ -9,9 +9,6 @@ HOWTO:
 * The main script must be placed at "steamapps\common\Counter-Strike Global Offensive\LuaCSGO\LuaCSGO.lua". 
 * Additional scripts can be used but they must be included (require("LuaCSGO/CustomScriptName") by the main script.
 
-Checkout the example script at https://github.com/MarkHC/LuaCSGO/tree/master/Example
-
-
 TODO:
 * Add error messages when something bad happens. As of right now if you call "class.function" instead of "class:function" the program just crashes without letting you know why.
 	
